@@ -1,9 +1,14 @@
+//src/app/(store)/profile/orders/page.tsx (user’s orders list)
+
+
+
 "use client";
 
 import { useState, useEffect } from "react";
 import { Order } from "../../../../lib/types/order";
 import { ordersApi } from "../../../../lib/api/orders";
 import Pagination from "../../../../components/common/Pagination";
+import { useAuthStore } from "../../../../lib/store/useAuthStore"; // ← add
 
 type SortOption = "date" | "total";
 type SortOrder = "asc" | "desc";
@@ -26,6 +31,7 @@ const getStatusColor = (status: Order["status"]) => {
 
 export default function OrderHistory() {
   // State for orders and selected order
+  const token = useAuthStore((s) => s.user?.token); // ← add
   const [orders, setOrders] = useState<Order[]>([]);
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
 
@@ -47,17 +53,22 @@ export default function OrderHistory() {
   const fetchOrders = async () => {
     try {
       setLoading(true);
-      const response = await ordersApi.getOrders({
-        page,
-        limit,
-        sort: sortBy,
-        order: sortOrder,
-        status: statusFilter || undefined,
-      });
+      if (!token) throw new Error("Please log in to view your orders.");
+      const response = await ordersApi.getOrders(
+        {
+          page,
+          limit,
+          sort: sortBy,
+          order: sortOrder,
+          status: statusFilter || undefined,
+        },
+        token // ← pass token
+      );
       setOrders(response.orders);
       setTotalPages(response.pagination.totalPages);
-    } catch (err) {
-      setError("Failed to load orders. Please try again later.");
+      setError(null);
+    } catch (err: any) {
+      setError(err?.message || "Failed to load orders. Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -65,7 +76,7 @@ export default function OrderHistory() {
 
   useEffect(() => {
     fetchOrders();
-  }, [page, statusFilter, sortBy, sortOrder]);
+  }, [page, statusFilter, sortBy, sortOrder, token]); // include token
 
   if (loading) {
     return (
