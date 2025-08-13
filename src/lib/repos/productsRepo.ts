@@ -22,7 +22,7 @@
 //   description?: string;
 // };
 
-// const API_BASE = "http://localhost:5000/api/products";
+// const API_BASE = "http://localhost:4001/api/products";
 
 // function mapFromBackend(p: any): Product {
 //   return {
@@ -119,7 +119,7 @@ export type CreateOrUpdateInput = {
   description?: string;
 };
 
-const API_BASE = "http://localhost:5000/api/products";
+const API_BASE = "http://localhost:4001/api/products";
 
 function mapFromBackend(p: any): Product {
   return {

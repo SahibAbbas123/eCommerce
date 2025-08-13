@@ -47,7 +47,7 @@
 //           return false;
 //         }
 //         try {
-//           const res = await fetch("http://localhost:5000/api/auth/register", {
+//           const res = await fetch("http://localhost:4001/api/auth/register", {
 //             method: "POST",
 //             headers: { "Content-Type": "application/json" },
 //             body: JSON.stringify({ email, password, name }),
@@ -76,7 +76,7 @@
 //       login: async (email, password) => {
 //         if (!email || !password) return false;
 //         try {
-//           const res = await fetch("http://localhost:5000/api/auth/login", {
+//           const res = await fetch("http://localhost:4001/api/auth/login", {
 //             method: "POST",
 //             headers: { "Content-Type": "application/json" },
 //             body: JSON.stringify({ email, password }),
@@ -218,23 +218,22 @@ export const useAuthStore = create<AuthState>()(
           return false;
         }
         try {
-          const res = await fetch("http://localhost:5000/api/auth/register", {
+          const res = await fetch("http://localhost:4001/api/auth/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password, name }),
           });
+          const data = await res.json();
           if (!res.ok) {
-            const data = await res.json();
             console.error("Register failed:", data.error);
             return false;
           }
-          const data = await res.json();
           set({
             user: {
               email: data.user.email,
               name: data.user.name,
               role: data.user.role,
-              token: data.token, // <-- save token here
+              token: data.token,
             },
           });
           return true;
@@ -247,17 +246,16 @@ export const useAuthStore = create<AuthState>()(
       login: async (email, password) => {
         if (!email || !password) return false;
         try {
-          const res = await fetch("http://localhost:5000/api/auth/login", {
+          const res = await fetch("http://localhost:4001/api/auth/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password }),
           });
+          const data = await res.json();
           if (!res.ok) {
-            const data = await res.json();
             console.error("Login failed:", data.error);
             return false;
           }
-          const data = await res.json();
           set({
             user: {
               email: data.user.email,
@@ -333,7 +331,22 @@ export const useAuthStore = create<AuthState>()(
             : {}
         ),
     }),
-    { name: "auth-store" }
+    {
+      name: "auth-store",
+      version: 1,
+      migrate: (persistedState: any) => {
+        return {
+          user: persistedState.user ? {
+            email: persistedState.user.email,
+            name: persistedState.user.name,
+            role: persistedState.user.role,
+            token: persistedState.user.token,
+            addresses: persistedState.user.addresses || [],
+            avatarUrl: persistedState.user.avatarUrl,
+          } : null
+        }
+      },
+    }
   )
 );
 
@@ -362,7 +375,7 @@ export const useAuthStore = create<AuthState>()(
 //       isAdmin: false, // Initialize as false
 //       login: async (email, password) => {
 //         try {
-//           const res = await fetch("http://localhost:5000/api/auth/login", {
+//           const res = await fetch("http://localhost:4001/api/auth/login", {
 //             method: "POST",
 //             headers: { "Content-Type": "application/json" },
 //             body: JSON.stringify({ email, password }),
