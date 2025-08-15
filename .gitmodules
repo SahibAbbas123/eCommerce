@@ -1,3 +1,6 @@
 [submodule "shopflow_backend"]
 	path = shopflow_backend
 	url = ./shopflow_backend
+[submodule "shopflow_frontend"]
+	path = shopflow_frontend
+	url = ./shopflow_frontend
