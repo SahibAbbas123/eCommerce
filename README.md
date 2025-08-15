@@ -272,3 +272,8 @@ We added mock repository modules under `lib/repos` to simulate a backend:
 7. Email notifications for orders.
 
 ---
+## Author
+
+S. M. Shahinul Karim - 21701023 \
+Sahib Abbas Bahar Chowdhury - 21701022 \
+Misbah Ul Haque Arafat - 21701033
