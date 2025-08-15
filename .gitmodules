@@ -1,6 +1,6 @@
 [submodule "shopflow_backend"]
 	path = shopflow_backend
-	url = ./shopflow_backend
+	url = https://github.com/ShahinulRafi/shopflow_backend.git
 [submodule "shopflow_frontend"]
 	path = shopflow_frontend
-	url = ./shopflow_frontend
+	url = https://github.com/ShahinulRafi/shopflow_frontend.git
