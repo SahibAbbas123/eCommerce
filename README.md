@@ -2,6 +2,12 @@
 
 # eCommerce Project
 
+## Author
+
+Shahinul Rafi - 21701023 \
+Sahib Abbas Bahar Chowdhury - 21701022 \
+Misbah Ul Haque Arafat - 21701033
+
 This repository serves as the **parent repository** for the eCommerce project, which is split into two submodules:
 
 - **[shopflow_backend](https://github.com/SahibAbbas123/shopflow_backend)** – Node.js backend API, authentication, and database logic.  
