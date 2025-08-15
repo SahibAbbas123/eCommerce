@@ -1,8 +1,53 @@
+# ShopFlow
+
+> A modern, full-featured e-commerce platform with an intuitive storefront and powerful admin dashboard.
+
+[![Next.js](https://img.shields.io/badge/Next.js-15-black)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38B2AC)](https://tailwindcss.com/)
+[![Zustand](https://img.shields.io/badge/Zustand-Latest-orange)](https://zustand-demo.pmnd.rs/)
+
+## 🚀 Quick Start
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/ShahinulRafi/shopflow_frontend.git
+   cd shopflow_frontend
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## 🛍️ Key Features
+
+### Customer Features
+- Browse and search products by categories
+- Advanced filtering and sorting options
+- Shopping cart and wishlist management
+- User profiles with order history
+- Streamlined checkout process
+
+### Admin Features
+- Comprehensive dashboard with KPIs
+- Product management (CRUD operations)
+- Order processing and tracking
+- User management with role-based access
+- Store settings configuration
+
 ---
 
-# ShopFlow — Development Progress README
+# Technical Documentation
 
-## Overview
+## Development Progress
 
 **ShopFlow** is a modern e-commerce platform built with **Next.js 15 (App Router)**, **React**, **TypeScript**, **Tailwind CSS**, and **Zustand**.
 It offers a full storefront experience plus a role-based **Admin Dashboard** for managing products, orders, users, and store settings.
