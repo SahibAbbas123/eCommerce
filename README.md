@@ -1,169 +1,134 @@
+# ShopFlow – Full-Stack eCommerce Platform
+
+> A modern, full-featured e-commerce solution with a Next.js frontend and a Node.js + Prisma backend, developed as part of our final project.
+
+[![Frontend: Next.js](https://img.shields.io/badge/Frontend-Next.js_15-black)](https://nextjs.org/)
+[![Backend: Node.js](https://img.shields.io/badge/Backend-Node.js_Express-green)](https://nodejs.org/)
+[![Database: Prisma](https://img.shields.io/badge/Database-Prisma_ORM-blue)](https://www.prisma.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38B2AC)](https://tailwindcss.com/)
+
+---
+## 👥 Authors
+
+S. M. Shahinul Karim – 21701023 \
+Sahib Abbas Bahar Chowdhury – 21701022 \
+Misbah Ul Haque Arafat – 21701033
 
 
-# eCommerce Project
+## 📦 Overview
 
-## Author
+This repository is the **parent** for the ShopFlow project.  
+It contains two Git submodules that together form the complete application:
 
-S. M. Shahinul Karim - 21701023 \
-Sahib Abbas Bahar Chowdhury - 21701022 \
-Misbah Ul Haque Arafat - 21701033
+- **[Frontend – shopflow_frontend](https://github.com/ShahinulRafi/shopflow_frontend.git)**  
+  Next.js 15 App Router storefront + admin dashboard with Tailwind CSS, Zustand, and TypeScript.
 
-This repository serves as the **parent repository** for the eCommerce project, which is split into two submodules:
+- **[Backend – shopflow_backend](https://github.com/ShahinulRafi/shopflow_backend.git)**  
+  Node.js + Express + Prisma API with authentication, product management, and order processing.
 
-- **[shopflow_backend](https://github.com/SahibAbbas123/shopflow_backend)** – Node.js backend API, authentication, and database logic.  
-- **[shopflow_frontend](https://github.com/SahibAbbas123/shopflow_frontend)** – Next.js frontend application with UI components and API integration.  
-
-The parent repo tracks **specific commits** of each submodule to ensure reproducible setups and consistent versions.
+The parent repo **only stores submodule references** (specific commits) to keep frontend and backend in sync.
 
 ---
 
-## Repository Structure
+## 🛠️ Architecture
 
-```
+```mermaid
+graph LR
+    subgraph Frontend [Frontend - Next.js]
+        UI[Storefront & Admin Dashboard]
+        UI --> API_Calls
+    end
 
-eCommerce/
-├── shopflow\_backend/    # Backend submodule
-├── shopflow\_frontend/   # Frontend submodule
-├── .gitmodules           # Submodule configuration
-└── .gitignore            # Ignore unnecessary files
+    subgraph Backend [Backend - Node.js + Prisma]
+        API[REST API Endpoints]
+        API --> DB[(Database)]
+    end
 
+    API_Calls --> API
 ````
 
-- Each submodule has its own `.git` history and remote repository.  
-- The parent repo stores only the **commit reference** for each submodule.
+---
+
+## 📂 Repository Structure
+
+```
+eCommerce/
+├── shopflow_backend/     # Backend submodule
+├── shopflow_frontend/    # Frontend submodule
+├── .gitmodules           # Submodule config
+└── .gitignore
+```
 
 ---
 
-## Cloning the Repository
+## 🚀 Quick Start – Full Stack
 
-To clone the parent repo along with submodules:
+### 1️⃣ Clone with Submodules
 
 ```bash
 git clone --recurse-submodules https://github.com/SahibAbbas123/eCommerce.git
-````
+```
 
-If you already cloned without `--recurse-submodules`:
+If already cloned:
 
 ```bash
 git submodule init
 git submodule update
 ```
 
-This ensures both backend and frontend are checked out at the commits tracked by the parent repo.
-
 ---
 
-## Getting Started (Run Locally)
-
-### 1️⃣ Backend
-
-1. Navigate to the backend folder:
+### 2️⃣ Setup Backend
 
 ```bash
 cd shopflow_backend
-```
-
-2. Install dependencies:
-
-```bash
 npm install
+cp .env.example .env   # Set DB + JWT secret
+npx prisma migrate dev
+npm run seed
+npm run dev            # Runs on http://localhost:4001
 ```
-
-3. Set environment variables if needed (e.g., `.env` file).
-
-4. Run the backend server:
-
-```bash
-npm run dev
-```
-
-* By default, it may run on `http://localhost:4000` (check backend README for details).
 
 ---
 
-### 2️⃣ Frontend
-
-1. Navigate to the frontend folder:
+### 3️⃣ Setup Frontend
 
 ```bash
-cd shopflow_frontend
-```
-
-2. Install dependencies:
-
-```bash
+cd ../shopflow_frontend
 npm install
-```
-
-3. Update `.env.local` or config files if needed (e.g., `API_BASE` URL).
-
-4. Run the frontend server:
-
-```bash
-npm run dev
-```
-
-* By default, it may run on `http://localhost:3000` and connect to the backend API.
-
----
-
-### 3️⃣ Verify Full App
-
-* Open your browser at `http://localhost:3000` and check that the frontend communicates with the backend.
-* Any changes in submodules should be committed in their own repo first, then the parent repo updated to track the latest commit.
-
----
-
-## Development Workflow
-
-### Updating a Submodule
-
-1. Navigate into the submodule:
-
-```bash
-cd shopflow_backend  # or shopflow_frontend
-```
-
-2. Make changes, commit, and push:
-
-```bash
-git add .
-git commit -m "Your message"
-git push origin main
-```
-
-3. Update the parent repo to point to the new submodule commit:
-
-```bash
-cd ..
-git add shopflow_backend  # or shopflow_frontend
-git commit -m "Update submodule to latest commit"
-git push
+cp .env.example .env.local   # Set NEXT_PUBLIC_API_BASE to backend URL
+npm run dev                  # Runs on http://localhost:3000
 ```
 
 ---
 
-### Pulling Updates
+### 4️⃣ Access the App
 
-To pull the latest updates for the parent repo and all submodules:
-
-```bash
-git pull --recurse-submodules
-git submodule update --remote --merge
-```
+* Storefront → [http://localhost:3000](http://localhost:3000)
+* Admin Dashboard → [http://localhost:3000/admin](http://localhost:3000/admin)
 
 ---
 
-## Notes
+## 🔄 Development Workflow
 
-* `.DS_Store` and `node_modules` are ignored in both parent and submodules.
-* Always commit and push changes in submodules first, then update the parent repo to track the latest submodule commits.
-* This setup ensures the backend and frontend stay in sync with each other for stable development.
+1. Work in the **appropriate submodule** (frontend or backend).
+2. Commit & push changes in that submodule’s repo.
+3. Update the parent repo to track the new commit:
+
+   ```bash
+   cd ..
+   git add shopflow_backend  # or shopflow_frontend
+   git commit -m "Update backend to latest commit"
+   git push
+   ```
 
 ---
 
-## References
+## 📚 Related Documentation
 
-* [shopflow\_backend README](https://github.com/SahibAbbas123/shopflow_backend)
-* [shopflow\_frontend README](https://github.com/SahibAbbas123/shopflow_frontend)
+* [Frontend README](https://github.com/SahibAbbas123/shopflow_frontend)
+* [Backend README](https://github.com/SahibAbbas123/shopflow_backend)
+
+
 ---
