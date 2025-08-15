@@ -127,8 +127,8 @@ npm run dev                  # Runs on http://localhost:3000
 
 ## 📚 Related Documentation
 
-* [Frontend README](https://github.com/SahibAbbas123/shopflow_frontend)
-* [Backend README](https://github.com/SahibAbbas123/shopflow_backend)
+* [Frontend README](https://github.com/ShahinulRafi/shopflow_frontend.git)
+* [Backend README](https://github.com/ShahinulRafi/shopflow_backend.git)
 
 
 ---
