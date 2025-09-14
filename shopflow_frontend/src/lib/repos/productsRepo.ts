@@ -119,7 +119,7 @@ export type CreateOrUpdateInput = {
   description?: string;
 };
 
-const API_BASE = "http://localhost:5000/api/products";
+const API_BASE = "http://localhost:4001/api/products";
 
 function mapFromBackend(p: any): Product {
   return {
@@ -135,11 +135,15 @@ function mapFromBackend(p: any): Product {
 }
 
 function mapToBackend(input: CreateOrUpdateInput) {
+  if (!input.image?.trim()) {
+    throw new Error("Image URL is required");
+  }
+  
   return {
     title: input.title,
     description: input.description ?? "",
     price: input.price,
-    image: input.image ?? "",
+    image: input.image.trim(),
     category: input.category,
     rating: 0,
     inStock: Number(input.stock) > 0, // number -> boolean for API

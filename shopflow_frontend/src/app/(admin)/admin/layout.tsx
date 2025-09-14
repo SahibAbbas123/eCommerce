@@ -114,9 +114,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </nav>
           <div className="p-2 mt-auto">
             <button
-              onClick={() => {
-                logout();
-                router.replace("/");
+              onClick={async () => {
+                try {
+                  await logout();
+                  router.replace("/"); // Explicitly redirect to the home page
+                } catch (error) {
+                  console.error("Failed to logout:", error);
+                }
               }}
               className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-100"
             >

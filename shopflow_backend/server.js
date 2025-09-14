@@ -35,6 +35,7 @@
 // });
 
 // server.js
+import 'dotenv/config';
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -44,10 +45,18 @@ import authRoutes from "./routes/auth.js";
 import productRoutes from "./routes/product.js";
 import orderRoutes from "./routes/orders.js";
 
+// For __dirname in ES modules
+import path from "path";
+import { fileURLToPath } from "url";
+
 dotenv.config(); // Load .env first
 
 const app = express();
 const prisma = new PrismaClient();
+
+// Get __dirname in ES module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Allowed origins for CORS
 const allowedOrigins = [
@@ -76,7 +85,7 @@ app.get("/", (_req, res) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4001;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
 
 // Tidy shutdown for Prisma
@@ -84,3 +93,6 @@ process.on("SIGINT", async () => {
   await prisma.$disconnect();
   process.exit(0);
 });
+
+// Serve uploaded files statically (local dev)
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));

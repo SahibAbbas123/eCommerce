@@ -134,7 +134,8 @@ export default function AdminGuard({ children }: { children: React.ReactNode }) 
     // wait one tick so Zustand can hydrate from localStorage
     const id = setTimeout(() => {
       if (!user) {
-        router.replace(`/login?next=${encodeURIComponent(pathname)}`);
+        // router.replace(`/login?next=${encodeURIComponent(pathname)}`);
+        router.replace(`/`);
         return;
       }
       if (!isAdmin) {

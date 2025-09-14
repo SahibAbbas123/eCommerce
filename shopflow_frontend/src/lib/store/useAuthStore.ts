@@ -218,7 +218,7 @@ export const useAuthStore = create<AuthState>()(
           return false;
         }
         try {
-          const res = await fetch("http://localhost:5000/api/auth/register", {
+          const res = await fetch("http://localhost:4001/api/auth/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password, name }),
@@ -246,7 +246,7 @@ export const useAuthStore = create<AuthState>()(
       login: async (email, password) => {
         if (!email || !password) return false;
         try {
-          const res = await fetch("http://localhost:5000/api/auth/login", {
+          const res = await fetch("http://localhost:4001/api/auth/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password }),

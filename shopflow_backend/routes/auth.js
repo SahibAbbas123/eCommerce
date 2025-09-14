@@ -3,6 +3,8 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { PrismaClient } from '@prisma/client';
+import { authenticateToken, authorizeAdmin } from "../middleware/auth.js";
+
 
 const router = express.Router();
 const prisma = new PrismaClient();
@@ -123,4 +125,37 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// GET /api/auth/users?skip=0&take=20
+router.get("/users", authenticateToken, authorizeAdmin, async (req, res) => {
+  try {
+    const skip = Number(req.query.skip || 0);
+    const take = Math.min(Number(req.query.take || 20), 100);
+
+    const [users, total] = await Promise.all([
+      prisma.user.findMany({
+        skip,
+        take,
+        orderBy: { createdAt: "desc" },
+        select: { id: true, email: true, name: true, role: true, createdAt: true },
+      }),
+      prisma.user.count(),
+    ]);
+
+    res.json({ users, total, skip, take });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
+// const JWT_SECRET = process.env.JWT_SECRET;
+// if (!JWT_SECRET) {
+//   console.error('JWT_SECRET missing');
+//   return res.status(500).json({ error: 'Server misconfiguration' });
+// }
+
+// const token = jwt.sign(
+//   { sub: user.id, role: user.role }, // use sub for subject
+//   JWT_SECRET,
+//   { expiresIn: '7d', issuer: 'shopflow' }
+// );
 export default router;

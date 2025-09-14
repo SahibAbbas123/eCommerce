@@ -87,8 +87,22 @@ import express from 'express';
 import { PrismaClient } from '@prisma/client';
 import { authenticateToken, authorizeAdmin } from '../middleware/auth.js';
 
+import multer from "multer";
+import path from "path";
+
 const router = express.Router();
 const prisma = new PrismaClient();
+
+// Disk storage (dev) — for prod you’ll swap to S3
+const storage = multer.diskStorage({
+  destination: (_req, _file, cb) => cb(null, "uploads/"),
+  filename: (_req, file, cb) => {
+    const unique = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    const ext = path.extname(file.originalname || "");
+    cb(null, unique + ext);
+  },
+});
+const upload = multer({ storage });
 
 // GET all products (public)
 router.get('/', async (req, res) => {
@@ -162,6 +176,21 @@ router.delete('/:id', authenticateToken, authorizeAdmin, async (req, res) => {
   } catch (error) {
     console.error('Error deleting product:', error);
     res.status(500).json({ error: 'Failed to delete product' });
+  }
+});
+
+// POST /api/products/upload-image  (multipart/form-data with key "image")
+router.post("/upload-image", upload.single("image"), async (req, res) => {
+  try {
+    if (!req.file) return res.status(400).json({ error: "No file uploaded" });
+
+    // Local dev URL
+    const url = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+    // For production with S3, return the S3 URL instead.
+
+    res.json({ url });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
   }
 });
 

@@ -6,19 +6,20 @@ import { products } from "../../../../lib/data/products";
 import SearchBar from "../../../../components/categories/SearchBar";
 import FilterSidebar from "../../../../components/categories/FilterSidebar";
 import ProductGrid from "../../../../components/categories/ProductGrid";
+import { use } from "react";
 
-
-export default function CategoryPage({ params }: { params: { category: string } }) {
-  const category = categories.find(c => c.id === params.category);
+export default function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
+  const { category: categoryId } = use(params);
+  const category = categories.find((c) => c.id === categoryId);
   const [search, setSearch] = useState("");
   const [filters, setFilters] = useState({ inStock: false });
 
   const filteredProducts = useMemo(() => {
-    let filtered = products.filter(p => p.category === params.category);
-    if (search) filtered = filtered.filter(p => p.title.toLowerCase().includes(search.toLowerCase()));
-    if (filters.inStock) filtered = filtered.filter(p => p.inStock);
+    let filtered = products.filter((p) => p.category === categoryId);
+    if (search) filtered = filtered.filter((p) => p.title.toLowerCase().includes(search.toLowerCase()));
+    if (filters.inStock) filtered = filtered.filter((p) => p.inStock);
     return filtered;
-  }, [search, filters, params.category]);
+  }, [search, filters, categoryId]);
 
   if (!category) return <div className="py-20 text-center text-gray-500">Category not found.</div>;
 
