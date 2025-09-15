@@ -30,7 +30,7 @@ export type Order = {
   date: string;
 };
 
-const API_BASE = "http://localhost:4001/api/orders";
+const API_BASE = "https://shopflow-backend.onrender.com/api/orders";
 
 export const ordersRepo = {
   async list(token: string): Promise<Order[]> {

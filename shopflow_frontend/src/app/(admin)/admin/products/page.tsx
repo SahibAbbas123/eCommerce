@@ -8,7 +8,7 @@ import { CreateOrUpdateInput, Product, productsRepo } from "@/lib/repos/products
 import ProductForm, { ProductFormOutput, ProductSchema } from "@/components/admin/ProductForm";
 import Pagination from "@/components/common/Pagination";
 
-const API = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4001";
+const API = process.env.NEXT_PUBLIC_API_URL ?? "https://shopflow-backend.onrender.com";
 
 export default function AdminProducts() {
   const [rows, setRows] = useState<Product[]>([]);

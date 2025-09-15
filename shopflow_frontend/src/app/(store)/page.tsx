@@ -40,7 +40,7 @@ const categories: Category[] = [
   { id: '1', name: 'Electronics', image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=400&h=300&fit=crop', itemCount: 1250, slug: 'electronics' },
   { id: '2', name: 'Fashion', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop', itemCount: 890, slug: 'fashion' },
   { id: '3', name: 'Home & Garden', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop', itemCount: 650, slug: 'home-garden' },
-  { id: '4', name: 'Sports', image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop', itemCount: 420, slug: 'sports' },
+  { id: '4', name: 'Sports', image: 'https://images.unsplash.com/photo-1653919198052-546d44e2458e?q=80&w=714&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', itemCount: 420, slug: 'sports' },
   { id: '5', name: 'Books', image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=300&fit=crop', itemCount: 780, slug: 'books' },
   { id: '6', name: 'Beauty', image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=300&fit=crop', itemCount: 340, slug: 'beauty' }
 ];
@@ -51,7 +51,7 @@ const featuredProducts: Product[] = [
   { id: '3', title: 'Smart Watch Series X', price: 399, image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop', category: 'Electronics', rating: 4.7, inStock: true, quantity: 1 },
   { id: '4', title: 'Minimalist Desk Lamp', price: 89, originalPrice: 120, image: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=300&h=300&fit=crop', category: 'Home & Garden', rating: 4.6, inStock: true, quantity: 1 },
   { id: '5', title: 'Running Shoes Elite', price: 159, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=300&fit=crop', category: 'Sports', rating: 4.8, inStock: true, quantity: 1 },
-  { id: '6', title: 'Organic Skincare Set', price: 79, originalPrice: 99, image: 'https://images.unsplash.com/photo-1556228578-dd6e8dc0164c?w=300&h=300&fit=crop', category: 'Beauty', rating: 4.9, inStock: true, quantity: 1 },
+  { id: '6', title: 'Organic Skincare Set', price: 79, originalPrice: 99, image: 'https://images.unsplash.com/photo-1653919198052-546d44e2458e?q=80&w=714&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', category: 'Beauty', rating: 4.9, inStock: true, quantity: 1 },
   { id: '7', title: 'Bestseller Novel Collection', price: 45, image: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=300&h=300&fit=crop', category: 'Books', rating: 4.5, inStock: true, quantity: 1 },
   { id: '8', title: 'Wireless Charging Pad', price: 49, originalPrice: 69, image: 'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=300&h=300&fit=crop', category: 'Electronics', rating: 4.4, inStock: true, quantity: 1 }
 ];

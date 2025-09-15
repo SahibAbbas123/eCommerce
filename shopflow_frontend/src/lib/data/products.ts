@@ -32,7 +32,7 @@ export const products = [
     category: 'sports',
     price: 159,
     rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop',
     inStock: true,
   },
   {
@@ -41,7 +41,7 @@ export const products = [
     category: 'books',
     price: 45,
     rating: 4.5,
-    image: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=300&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop',
     inStock: true,
   },
   {
@@ -50,7 +50,7 @@ export const products = [
     category: 'beauty',
     price: 79,
     rating: 4.9,
-    image: 'https://images.unsplash.com/photo-1556228578-dd6e8dc0164c?w=300&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1653919198052-546d44e2458e?q=80&w=714&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     inStock: false,
   },
 ];

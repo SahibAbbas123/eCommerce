@@ -119,7 +119,7 @@ export type CreateOrUpdateInput = {
   description?: string;
 };
 
-const API_BASE = "http://localhost:4001/api/products";
+const API_BASE = "https://shopflow-backend.onrender.com/api/products";
 
 function mapFromBackend(p: any): Product {
   return {

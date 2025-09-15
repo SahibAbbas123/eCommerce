@@ -176,13 +176,13 @@ export default function AuthModal({ open, onClose, initialTab = "login" }: AuthM
             >
               Login
             </button>
-            <button
+            {/* <button
               type="button"
               className="w-full bg-gray-100 text-gray-700 rounded px-4 py-2 font-semibold flex items-center justify-center gap-2"
               disabled
             >
               <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" /> Continue with Google
-            </button>
+            </button> */}
             {error && <div className="text-red-600 text-sm">{error}</div>}
           </form>
         ) : (
@@ -217,13 +217,13 @@ export default function AuthModal({ open, onClose, initialTab = "login" }: AuthM
             >
               Register
             </button>
-            <button
+            {/* <button
               type="button"
               className="w-full bg-gray-100 text-gray-700 rounded px-4 py-2 font-semibold flex items-center justify-center gap-2"
               disabled
             >
               <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" /> Continue with Google
-            </button>
+            </button> */}
             {error && <div className="text-red-600 text-sm">{error}</div>}
           </form>
         )}

@@ -121,7 +121,7 @@
 
 import { Order } from "../types/order";
 
-const API_BASE = "http://localhost:4001/api/orders";
+const API_BASE = "https://shopflow-backend.onrender.com/api/orders";
 
 export const ordersApi = {
   // Create order from checkout
