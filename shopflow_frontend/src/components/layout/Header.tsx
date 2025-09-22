@@ -1,5 +1,5 @@
 // "use client";
-
+// D:\WebEng\eCommerce\shopflow_frontend\src\components\layout\Header.tsx
 // import React, { useState, useRef, useEffect } from 'react';
 // import Link from "next/link";
 // import { usePathname } from "next/navigation";

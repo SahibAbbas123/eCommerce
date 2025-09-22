@@ -18,18 +18,6 @@ export function authenticateToken(req, res, next) {
   });
 }
 
-// const JWT_SECRET = process.env.JWT_SECRET;
-// if (!JWT_SECRET) {
-//   console.error('JWT_SECRET missing');
-//   return res.status(500).json({ error: 'Server misconfiguration' });
-// }
-
-// const token = jwt.sign(
-//   { sub: user.id, role: user.role }, // use sub for subject
-//   JWT_SECRET,
-//   { expiresIn: '7d', issuer: 'shopflow' }
-// );
-
 export function authorizeAdmin(req, res, next) {
   const role = (req.user?.role || "").toString().toUpperCase(); // accept any case
   if (role !== "ADMIN") {
