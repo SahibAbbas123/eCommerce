@@ -1,7 +1,5 @@
 //src/app/(store)/profile/orders/page.tsx (user’s orders list)
 
-
-
 "use client";
 
 import { useState, useEffect } from "react";

@@ -4,8 +4,6 @@
 import { useAuthStore } from "@/lib/store/useAuthStore";
 import { useCartStore } from "@/lib/store/useCartStore";
 import { useEffect } from "react";
-// import { useAuthStore } from "../lib/store/useAuthStore";
-// import { useCartStore } from "../lib/store/useCartStore";
 
 export default function CartResetOnLogout() {
   const user = useAuthStore((s) => s.user);

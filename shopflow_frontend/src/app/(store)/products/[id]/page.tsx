@@ -131,8 +131,9 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
       id: product.id,
       title: product.title,
       price: product.price,
+      // image: product.images?.[0] || "/placeholder.png",
+      // quantity,
       image: product.images?.[0] || "/placeholder.png",
-      quantity,
     });
     setQuantity(1); // reset quantity after adding
   };
@@ -262,7 +263,8 @@ const ProductDetailsPage: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto py-8 px-4">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <ImageGallery images={product.images || [product.image || "/placeholder.png"]} />
+        {/* <ImageGallery images={product.images || [product.image || "/placeholder.png"]} /> */}
+        <ImageGallery images={product.images || [product.images || "/placeholder.png"]} />
         <ProductInfo product={product} />
       </div>
       <ProductTabs product={product} reviews={[]} />

@@ -1,7 +1,6 @@
 // this is /Users/sahibabc/ecomLanding/ecomlanding/src/app/wishlist/page.tsx
 "use client";
 import { useCartStore } from "../../../lib/store/useCartStore";
-// import { categories } from "../../lib/data/categories";
 import Link from "next/link";
 
 export default function WishlistPage() {

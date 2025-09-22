@@ -4,8 +4,7 @@
 import React, { useState } from 'react';
 import { Search, ShoppingCart, Heart, User, Menu, X, Star, ArrowRight, Shield, Truck, Headphones, RefreshCw } from 'lucide-react';
 import Link from 'next/link';
-
-import Footer from '../../components/layout/Footer.tsx';
+import Footer from '@/components/layout/Footer';
 
 
 interface Category {

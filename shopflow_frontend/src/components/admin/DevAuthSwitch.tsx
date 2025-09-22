@@ -28,29 +28,10 @@ export default function DevAuthSwitch() {
     }
   };
 
-  // const handleLogout = async () => {
-  //   try {
-  //     // logout user
-  //     await logout();
-
-  //     // clear Zustand cart state & storage properly
-  //     const cartStore = useCartStore.getState();
-  //     cartStore.clearCart(); // clear in-memory
-  //     useCartStore.persist.clearStorage(); // clear localStorage persist
-
-  //     router.push("/"); // redirect home
-  //   } catch (error) {
-  //     console.error("Failed to logout:", error);
-  //   }
-  // };
 
   const handleLogout = async () => {
     try {
       await logout(); // clears user in Zustand
-
-      // ✅ Clear cart in memory
-      // const cartStore = useCartStore.getState();
-      // cartStore.clearCart();
 
       // // ✅ Clear persisted cart storage
       // localStorage.removeItem("cart-wishlist-store");
