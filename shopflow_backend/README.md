@@ -30,7 +30,7 @@ A robust e-commerce backend API built with Node.js, Express, and Prisma ORM. Thi
 - **Runtime Environment**: Node.js
 - **Framework**: Express.js
 - **Database ORM**: Prisma
-- **Database**: PostgreSQL
+- **Database**: SQLite (can be easily migrated to PostgreSQL/MySQL)
 - **Authentication**: JWT (jsonwebtoken)
 - **Password Hashing**: bcryptjs
 - **API Security**: CORS enabled
@@ -56,16 +56,10 @@ A robust e-commerce backend API built with Node.js, Express, and Prisma ORM. Thi
 
 3. Set up environment variables:
    Create a `.env` file in the root directory with the following variables:
-
    ```env
-   # Database connection (PostgreSQL)
-   DATABASE_URL="postgresql://<username>:<password>@<host>/<database>"
-   
-   # JWT secret key
+   DATABASE_URL="file:./dev.db"
    JWT_SECRET=your_jwt_secret
-   
-   # Frontend URL (for CORS)
-   FRONTEND_URL=http://localhost:3000
+   ```
 
 4. Set up the database:
    ```bash
